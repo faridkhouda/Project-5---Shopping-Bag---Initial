@@ -8,14 +8,10 @@
 
 <script>
 
-import axios from 'axios'
   export default {
 
     created() {
-      axios.get('https://fakestoreapi.com/products')
-      .then( Response => {
-        console.log(Response.data);
-      })
+      this.$store.dispatch('leadProducts');
     }
   }
   
