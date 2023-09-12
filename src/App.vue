@@ -13,6 +13,7 @@ export default {
 
   created() {
     this.$store.dispatch('leadProducts');
+    this.$store.dispatch('leadBag');
   },
 
   computed: mapState([
