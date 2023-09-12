@@ -18,7 +18,7 @@
           <span class="amount">{{ product.price * product.quantity}}</span>
         </div>
       </div>
-      <div class="grand-total"> Grand Total: US$ 22.30</div>
+      <div class="grand-total"> Grand Total: US$ {{ orderTotal() }}  </div>
       </template>
       <template v-else><h4>No itmes in bag yet</h4></template>
 
@@ -40,7 +40,13 @@ export default {
   'productInBag',
 ]),
   methods: {
-   
+   orderTotal() {
+    var total = 0;
+    this.productInBag.forEach(item => {
+      total += item.price * item.quantity;
+    });
+    return total;
+   }
   },
  
 }
