@@ -15,7 +15,7 @@ export default createStore({
       state.productInBag.push(product); 
     },
     removeFromBag(state, productId) {
-      let updatedBag = state.productInBag.filter(item => productId != item.productId);
+      var updatedBag = state.productInBag.filter(item => productId != item.productId);
       state.productInBag = updatedBag;
     }
   },
