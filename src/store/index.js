@@ -8,7 +8,6 @@ export default createStore({
   },
   mutations: {
     leadProducts(state, products) {
-      console.log("hello", products);
       state.products = products;
     },
     addToBag(state, product) {
@@ -31,7 +30,10 @@ export default createStore({
       commit('addToBag',product);
     },
     removeFromBag({ commit }, productId) {
+      if(confirm('Are you sure you want to remove the item from the bag ?')) {
       commit('removeFromBag', productId);
+      }
+
     }
   },
   modules: {

@@ -5,12 +5,11 @@
         <div class="product-image" :style="{ backgroundImage: 'url(' + product.image + ')' }"></div>
         <h4>{{ product.title }}</h4>
         <p class="price">{{ product.price.toFixed(2) }}</p>
-        <button v-if="!isInBag(product)" @click="addToBag(product)">Add to bag</button>
+        <button v-if="!isInBag(product)" @click.stop="addToBag(product)">Add to bag</button>
 
-        <button v-else class="remove" @click="removeFbag(product.id)">Remove from bag</button>
+        <button v-else class="remove" @click=" this.$store.dispatch('removeFromBag', productId);">Remove from bag</button>
       </div>
     </div>
-    {{ productInBag.length }}
   </div>
 </template>
 
@@ -36,9 +35,6 @@ export default {
     },
     isInBag(product) {
       return this.productInBag.find(item => item.id === product.id)
-    },
-    removeFbag(productId) {
-      return this.$store.dispatch('removeFromBag', productId.id);
     }
   }
 }
