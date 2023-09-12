@@ -15,6 +15,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex' 
 
 export default {
   name: 'HomePage',
@@ -22,14 +23,11 @@ export default {
     return {
     }
   },
-  computed: {
-    products() {
-      return this.$store.state.products
-    },
-    productInBag() {
-      return this.$store.state.productInBag;
-    }
-  },
+  computed: mapState([
+  
+  'products', 
+  'productInBag'
+]),
 
   methods: {
     addToBag(product) {
